@@ -1,7 +1,20 @@
-import { getSqrtNumber, getAsyncNumber } from './utils/functions.js';
+const modules = require('ym');
 
-getAsyncNumber(2)
-  .then(number => console.log(number + getSqrtNumber(2)))
-  .catch(error => console.log(`Произошла непредвиденная ошибка: ${error}`));
+modules.define('getSqrtNumber', (provide) => provide(2 ** 2));
+
+modules.define('getAsyncNumber', (provide) => {
+  new Promise((res, rej) => {
+    setTimeout(() => res(2), 1000);
+    // throw new Error('Произошла непредвиденная ошибка');
+  })
+  .then(data => provide(data))
+  .catch(error => provide(null, error));
+});
+
+modules.require(
+  ['getSqrtNumber', 'getAsyncNumber'],
+  (getSqrtNumber, getAsyncNumber) => console.log(getAsyncNumber + getSqrtNumber),
+  error => console.log(error.message)
+);
 
 console.log(4);

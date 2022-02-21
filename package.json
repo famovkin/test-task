@@ -1,0 +1,23 @@
+{
+  "name": "test-task",
+  "version": "1.0.0",
+  "description": "Тестовое задание",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/famovkin/test-task.git"
+  },
+  "keywords": [],
+  "author": "Толя Фам",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/famovkin/test-task/issues"
+  },
+  "homepage": "https://github.com/famovkin/test-task#readme",
+  "dependencies": {
+    "ym": "^0.1.2"
+  }
+}
